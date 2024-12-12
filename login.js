@@ -1,7 +1,7 @@
 class login {
     message = document.getElementById('message');
 
-    handleSubmit = function () {
+    handleSubmit() {
         this.checkLogin();
     }
 
