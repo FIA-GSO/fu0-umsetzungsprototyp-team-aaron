@@ -38,26 +38,22 @@ class login {
 
         let enteredLoginData = new loginData(username, password)
 
-        this.validLoginData.forEach(element => {
-            if(element.isEqual(enteredLoginData))
-            {
-                console.log("huh")
-                this.displaySuccessMessage()
-                this.redirect()
-                return
-            }
-        });
-        
-        this.displayErrorMessage()
+        const isLoginValid = this.validLoginData.some(element => element.isEqual(enteredLoginData));
+
+        if(isLoginValid) {
+            this.displaySuccessMessage()
+            this.redirect()
+        }
+        else {
+            this.displayErrorMessage()
+        }
     }
 
     displayErrorMessage() {
         message.textContent = 'Ungültiger Benutzername oder Passwort';
     }
 
-    displaySuccessMessage() {
-        const message = document.getElementById('message');
-        
+    displaySuccessMessage() {        
         message.textContent = 'Login erfolgreich!';
         message.style.color = 'green';
     }
