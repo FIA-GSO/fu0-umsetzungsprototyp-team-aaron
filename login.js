@@ -47,6 +47,7 @@ class login {
 
     displayErrorMessage() {
         message.textContent = 'Ungültiger Benutzername oder Passwort';
+        message.style.color = 'red';
     }
 
     displaySuccessMessage() {        
