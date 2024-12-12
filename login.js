@@ -1,5 +1,32 @@
+class loginData{
+    constructor(name, password) {
+        this.name = name
+        this.password = password
+    }
+
+    getName() {
+        return this.name;
+    }
+
+    getPassword() {
+        return this.password;
+    }
+
+    isEqual(login) {
+        return this.getName() == login.getName() && this.getPassword() == login.getPassword()
+    }
+}
+
 class login {
     message = document.getElementById('message');
+    
+    validLoginData = [
+        new loginData("admin", "password"),
+        new loginData("simon", "pokemänners"),
+        new loginData("aaron", "weisserMonsterEnergy"),
+        new loginData("sören", "gameBoyZocken123"),
+        new loginData("grigorij", ":(:(:(:(")
+    ]
 
     handleSubmit() {
         this.checkLogin();
@@ -9,12 +36,19 @@ class login {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
 
-        if (username === 'admin' && password === 'password') {
-            this.displaySuccessMessage()
-            this.redirect()
-        } else {
-            this.displayErrorMessage()
-        }
+        let enteredLoginData = new loginData(username, password)
+
+        this.validLoginData.forEach(element => {
+            if(element.isEqual(enteredLoginData))
+            {
+                console.log("huh")
+                this.displaySuccessMessage()
+                this.redirect()
+                return
+            }
+        });
+        
+        this.displayErrorMessage()
     }
 
     displayErrorMessage() {
