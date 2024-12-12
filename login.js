@@ -7,6 +7,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     if (username === 'admin' && password === 'password') {
         message.textContent = 'Login erfolgreich!';
         message.style.color = 'green';
+        window.location.href = "./index.html";
     } else {
         message.textContent = 'Ungültiger Benutzername oder Passwort';
     }
