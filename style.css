@@ -3,6 +3,7 @@ body {
     background-image: url('car.png');
     background-repeat: repeat;
     background-size: 50%;
+    color:pink;
 }
 
 p, h1, h2, h3 {
