@@ -2,6 +2,7 @@ class loginData{
     constructor(name, password) {
         this.name = name
         this.password = password
+        localStorage.setItem(name, password)
     }
 
     getName() {
@@ -34,7 +35,11 @@ class login {
 
         let enteredLoginData = new loginData(username, password)
 
-        const isLoginValid = this.validLoginData.some(element => element.isEqual(enteredLoginData));
+        let isLoginValid = false //this.validLoginData.some(element => element.isEqual(enteredLoginData));
+
+        if(password == localStorage.getItem(username)){
+            isLoginValid = true
+        }
 
         if(isLoginValid) {
             this.displaySuccessMessage()
